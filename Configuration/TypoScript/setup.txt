@@ -1,0 +1,124 @@
+# include JS for wrapper functions
+page.includeJSFooter {
+	jquery-ui = EXT:extbase_ajax/Resources/Public/Scripts/jquery-ui.js
+    forceOnTop = 0
+
+	blockui = EXT:extbase_ajax/Resources/Public/Scripts/jquery.blockui.js
+    blockui.forceOnTop = 0
+
+	getUrlParam = EXT:extbase_ajax/Resources/Public/Scripts/jquery.getUrlParam.js
+    getUrlParam.forceOnTop = 0
+
+	extbase_ajax = EXT:extbase_ajax/Resources/Public/Scripts/extbase_ajax.js
+    extbase_ajax.forceOnTop = 0
+
+}
+
+plugin.tx_datatables._CSS_DEFAULT_STYLE (
+  table.dataTable {
+    border-collapse: collapse !important;
+    font-size: 75%;
+    width: 100% !important;
+  }
+
+  table.dataTable tr {
+    border: 1px solid #CCCCCC;
+  }
+
+  table.dataTable thead th,
+  table.dataTable tfoot td,
+  table.dataTable tbody td {
+    min-width: 1em;
+    padding: 2px 8px 2px 4px !important;
+    vertical-align: middle;
+  }
+)
+
+page.includeCSS {
+   jQueryCss = EXT:extbase_ajax/Resources/Public/Scripts/jquery-ui.css
+}
+
+page.headerData.10 = TEXT
+page.headerData.10.value (
+<script>
+  var regex = new RegExp("[?&]L(=([^&#]*)|&|#|$)"), results = regex.exec(window.location.href);
+  if (!results) { 
+    lang = 0;
+  } else if (!results[2]) {
+    lang = 0;
+  } else {
+    lang = results[2];
+  }
+
+  extbaseAjax = {
+    type: {$plugin.tx_extbaseajax.pageType},
+    prefix: 'tx_{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}',
+
+    buttonsave: '{$plugin.tx_extbaseajax.buttonsave}'.split(',')[lang],
+    buttoncancel: '{$plugin.tx_extbaseajax.buttoncancel}'.split(',')[lang],
+    buttonok: '{$plugin.tx_extbaseajax.buttonok}'.split(',')[lang],
+    buttonyes: '{$plugin.tx_extbaseajax.buttonyes}'.split(',')[lang],
+    buttonno: '{$plugin.tx_extbaseajax.buttonno}'.split(',')[lang],
+    confirmtitle: '{$plugin.tx_extbaseajax.confirmtitle}'.split(',')[lang],
+    discard: '{$plugin.tx_extbaseajax.discard}'.split(',')[lang],
+  }
+</script>
+)
+
+
+# Ajax configuration
+ajax = PAGE
+ajax {
+	#disable all headers
+	config {
+		disableAllHeaderCode = {$plugin.tx_extbaseajax.disableAllHeaderCode}
+		disablePrefixComment = {$plugin.tx_extbaseajax.disablePrefixComment}
+		additionalHeaders = {$plugin.tx_extbaseajax.additionalHeaders}
+		xhtml_cleaning = {$plugin.tx_extbaseajax.xhtml_cleaning}
+		no_cache = {$plugin.tx_extbaseajax.no_cache}
+		admPanel = {$plugin.tx_extbaseajax.admPanel}
+
+		language = {$plugin.tx_extbaseajax.language0}
+		locale_all = {$plugin.tx_extbaseajax.locale_all0}
+		metaCharset = {$plugin.tx_extbaseajax.metaCharset0}
+		sys_language_uid = 0
+	}
+}
+
+[globalVar = GP:tx_{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}|format=html]
+	ajax.config.additionalHeaders = Content-Type:text/html
+[global]
+
+[globalVar = GP:tx_{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}|format=xml]
+	ajax.config.additionalHeaders = Content-Type:application/xml
+[global]
+
+[globalVar = GP:tx_{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}|format=json]
+	ajax.config.additionalHeaders = Content-Type:application/json
+[global]
+
+[globalVar = GP:tx_{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}|format=txt]
+	ajax.config.additionalHeaders = Content-Type:application/txt
+[global]
+
+
+# actual pagetype
+AJAX_Plugintyp < ajax
+AJAX_Plugintyp {
+	10 < tt_content.list.20.{$plugin.tx_extbaseajax.extensionName}_{$plugin.tx_extbaseajax.pluginName}
+	typeNum = {$plugin.tx_extbaseajax.pageType}
+}
+
+[globalVar = GP:L = 1]
+  AJAX_Plugintyp.config.language = {$plugin.tx_extbaseajax.language1}
+  AJAX_Plugintyp.config.locale_all = {$plugin.tx_extbaseajax.locale_all1}
+  AJAX_Plugintyp.metaCharset = {$plugin.tx_extbaseajax.metaCharset1}
+  AJAX_Plugintyp.config.sys_language_uid = 1
+[global]
+
+[globalVar = GP:L = 2]
+  AJAX_Plugintyp.config.language = {$plugin.tx_extbaseajax.language2}
+  AJAX_Plugintyp.config.locale_all = {$plugin.tx_extbaseajax.locale_all2}
+  AJAX_Plugintyp.metaCharset = {$plugin.tx_extbaseajax.metaCharset2}
+  AJAX_Plugintyp.config.sys_language_uid = 2
+[global]

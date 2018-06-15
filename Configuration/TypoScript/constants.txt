@@ -1,0 +1,78 @@
+plugin.tx_extbaseajax {
+	# cat=plugin.tx_extbaseajax/other/1; type=string; label=Button Yes: Default Text for YES Button
+	buttonyes  = Yes,Ja,Oui
+
+	# cat=plugin.tx_extbaseajax/other/2; type=string; label=Button No: Default Text for NO Button
+	buttonno  = No,Nein,Non
+
+	# cat=plugin.tx_extbaseajax/other/3; type=string; label=Button Save: Default Text for SAVE Button
+	buttonsave  = Save,Speichern,[...]
+
+	# cat=plugin.tx_extbaseajax/other/4; type=string; label=Button Cancel: Default Text for CANCEL Button
+	buttoncancel  = Cancel,Abbrechen,[...]
+
+	# cat=plugin.tx_extbaseajax/other/5; type=string; label=Button Ok: Default Text for OK Button
+	buttonok  = Ok,Ok,Ok
+
+	# cat=plugin.tx_extbaseajax/other/5a; type=string; label=Confirm: Default Text for Confirmation title
+	confirmtitle  = Confirm,Bestätigen,[...]
+
+	# cat=plugin.tx_extbaseajax/other/5b; type=string; label=Discard: Default Text for Discard changes
+	discard  = Discard changes?,Änderungen verwerfen?,[...]
+
+	# cat=plugin.tx_extbaseajax/other/6; type=int+; label=Page Type: Specify the Page type for ajax calls
+	pageType  = 112233
+
+	# cat=plugin.tx_extbaseajax/other/7; type=string; label=Your extension name: Enter the name of the extension where to inject AJAX controllers in ext_localconf.php
+	extensionName  = 
+
+	# cat=plugin.tx_extbaseajax/other/8; type=string; label=Your plugin name: Enter the name of the plugin in ext_localconf.php
+	pluginName  = ajax
+
+	# cat=plugin.tx_extbaseajax/enable/1; type=boolean; label=Disable Headers: If set, all headers will be disabled (recommended: on).
+    disableAllHeaderCode = 1
+
+	# cat=plugin.tx_extbaseajax/enable/2; type=boolean; label=Disable Prefix Comments: If set, prefix comments will be disabled (recommended: on).
+    disablePrefixComment = 1
+
+	# cat=plugin.tx_extbaseajax/enable/3; type=options[Content-Type:text/html,Content-Type:application/xml,Content-Type:application/json,Content-Type:application/txt]; label=Default Content Type: If no format POST/GET var is specified, the result header will be set to this value.
+    additionalHeaders = Content-Type:text/html
+
+	# cat=plugin.tx_extbaseajax/enable/4; type=boolean; label=Enable XHTML Cleaning: If set, xhtml cleaning will be turned on (recommended: off).
+    xhtml_cleaning = 0
+
+	# cat=plugin.tx_extbaseajax/enable/5; type=boolean; label=Disable Cache: If set, caching will be disabled (recommended: on).
+    no_cache = 1
+
+	# cat=plugin.tx_extbaseajax/enable/6; type=boolean; label=Enable Admin Panel: Enables admin panel (not recommended).
+    admPanel = 0
+
+	# cat=plugin.tx_extbaseajax/language/1; type=string; label=Language 0: Language setting.
+	language0 = en
+
+	# cat=plugin.tx_extbaseajax/language/2; type=string; label=Locale Settings 0: Localesettings (e.g. de_AT.utf-8)
+	locale_all0 = en_US.utf-8
+
+	# cat=plugin.tx_extbaseajax/language/3; type=string; label=Charset 0: Charset (usually utf-8).
+	metaCharset0 = utf-8
+
+	# cat=plugin.tx_extbaseajax/language/4; type=string; label=Language 1: Language setting.
+	language1 = de
+
+	# cat=plugin.tx_extbaseajax/language/5; type=string; label=Locale Settings 1: Localesettings (e.g. de_AT.utf-8)
+	locale_all1 = de_AT.utf-8
+
+	# cat=plugin.tx_extbaseajax/language/6; type=string; label=Charset 1: Charset (usually utf-8).
+	metaCharset1 = utf-8
+
+	# cat=plugin.tx_extbaseajax/language/7; type=string; label=Language 2: Language setting.
+	language2 = fr
+
+	# cat=plugin.tx_extbaseajax/language/8; type=string; label=Locale Settings 2: Localesettings (e.g. de_AT.utf-8)
+	locale_all2 = fr_FR.utf-8
+
+	# cat=plugin.tx_extbaseajax/language/9; type=string; label=Charset 2: Charset (usually utf-8).
+	metaCharset2 = utf-8
+
+
+}
